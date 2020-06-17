@@ -1,0 +1,13 @@
+#!/bin/bash
+
+CHANGES="$( $GIT_DIR git diff --name-only --diff-filter=ACMR HEAD | grep \\.php)"
+
+if [[ "$@" ]];
+then
+  bash "$(dirname $0)/run" app /app/vendor/bin/phpcbf --standard="phpcs.ruleset.xml" "$@"
+elif [[ $CHANGES ]];
+then
+  bash "$(dirname $0)/run" app /app/vendor/bin/phpcbf --standard="phpcs.ruleset.xml" $CHANGES "$@"
+else
+  echo "There is no changes in local git php files"
+fi

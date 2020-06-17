@@ -1,0 +1,2 @@
+#!/bin/bash
+bash "$(dirname $0)/run" app php  vendor/bin/paratest "$@"

@@ -1,0 +1,3 @@
+#!/bin/bash
+SCRIPT_DIR="$(dirname "$0")"
+bash "$(dirname $0)/run" app /app/vendor/bin/phpcs "$@"
